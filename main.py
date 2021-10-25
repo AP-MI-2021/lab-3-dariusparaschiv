@@ -12,6 +12,15 @@
 import math
 
 
+def read_list():
+    lst = []
+    given_sting = input("Dati o lista cu numerele separate prin virgula ")
+    numbers_as_string = given_sting.split(",")
+    for x in numbers_as_string:
+        lst.append(int(x))
+    return lst
+
+
 def perfect_square(lst):
     """"
     determina daca toate nr. dintr-o lista sunt patrate perfecte
@@ -87,26 +96,6 @@ def test_get_longest_prime_digits():
     assert get_longest_prime_digits([2, 23, 4, 7, 5, 53, 9, 0]) == [7, 5, 53]
 
 
-def read_list():
-    lst = []
-    given_string = input("Dati o lista cu elementele separate prin virgula: ")
-    numbers_as_string = given_string.split(",")
-    for x in numbers_as_string:
-        lst.append(int(x))
-    return lst
-
-
-def problem_1(lst):
-    test_perfect_square()
-    test_get_longest_all_perfect_squares()
-    print(get_longest_all_perfect_squares(lst))
-
-
-def problem_2(lst):
-    test_get_longest_prime_digits()
-    print(get_longest_prime_digits(lst))
-
-
 def div_count(t):
     if t == 1:
         return 1
@@ -157,40 +146,33 @@ def test_get_longest_same_div_count():
     assert get_longest_same_div_count([2, 20, 48, 5, 23]) == [5, 23]
 
 
-def read_list():
-    lst = []
-    given_sting = input("Dati o lista cu numerele separate prin virgula ")
-    numbers_as_string = given_sting.split(",")
-    for x in numbers_as_string:
-        lst.append(int(x))
-    return lst
-
-
-def problem_3(lst):
-    test_numar_divizori()
-    test_get_longest_same_div_count()
-    print(get_longest_same_div_count(lst))
-
-
 def print_menu():
-    print("1.Determinare cea mai lungă subsecvență cu proprietatea 1.")
-    print("2.Determinare cea mai lungă subsecvență cu proprietatea 2.")
-    print("3.Determinare cea mai lungă subsecvență cu proprietatea 3.")
-    print("4.Iesire")
+    print("1.Citire numere")
+    print("2.Determinare cea mai lungă subsecvență cu proprietatea 1.")
+    print("3.Determinare cea mai lungă subsecvență cu proprietatea 2.")
+    print("4.Determinare cea mai lungă subsecvență cu proprietatea 3.")
+    print("x.Iesire")
 
 
 def main():
-    lst = read_list()
+    test_perfect_square()
+    test_get_longest_all_perfect_squares()
+    test_get_longest_prime_digits()
+    test_numar_divizori()
+    test_get_longest_same_div_count()
+    lst = []
     while True:
         print_menu()
         optiune = input("Alegeti o optiune ")
         if optiune == "1":
-            problem_1(lst)
+            lst = read_list()
         elif optiune == "2":
-            problem_2(lst)
+            print(get_longest_all_perfect_squares(lst))
         elif optiune == "3":
-            problem_3(lst)
+            print(get_longest_prime_digits(lst))
         elif optiune == "4":
+            print(get_longest_same_div_count(lst))
+        elif optiune == "x":
             break
         else:
             print("optiune gresita!")
